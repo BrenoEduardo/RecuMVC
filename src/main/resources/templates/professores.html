@@ -1,56 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Professores</title>
-
-    <style>
-        table,
-        td,
-        th {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 0px 15px;
-        }
-
-        th {
-            background-color: #04AAFF;
-        }
-
-        tr:nth-child(even) {
-            background-color: lightgrey;
-        }
-
-        tr:hover {
-            background-color: gray;
-        }
-    </style>
-</head>
-
-<body>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout">
+<div th:fragment="conteudo">
+  <div class="container">
     <h1>Lista de Professores</h1>
-    <a href="/novo-professor">
-        <h5>Cadastrar novo professor</h5>
-    </a>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nome do professor</th>
-            <th>Ações</th>
-        </tr>
-        <tr th:each="professor:${professores}" th:object="${professor}">
-            <td th:text="*{id}">1</td>
-            <td th:text="*{nome}">2</td>
-            <td>
-                <a th:href="@{/editar-professor(id=*{id})}">Editar</a>
-                <a th:href="@{/excluir-professor(id=*{id})}">Excluir</a>
-            </td>
-        </tr>
+   
+    <table class="table table-dark table-hover">
+      <tr>
+        <th>ID</th>
+        <th>Nome do professor</th>
+        <th>Ações</th>
+      </tr>
+      <tr th:each="professor:${professores}" th:object="${professor}">
+        <td th:text="*{id}">1</td>
+        <td th:text="*{nome}">2</td>
+        <td>
+          <a th:href="@{/editar-professor(id=*{id})}">Editar</a>
+          <a th:href="@{/excluir-professor(id=*{id})}">Excluir</a>
+        </td>
+      </tr>
     </table>
-
-</body>
+  </div>
+</div>
 
 </html>
