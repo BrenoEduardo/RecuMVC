@@ -18,8 +18,8 @@ public class ProfessoresApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		jdbcTemplate.execute("CREATE TABLE professor(id SERIAL, nome VARCHAR(255))");	
-		
+		jdbcTemplate.execute("CREATE TABLE professor(id SERIAL, nome VARCHAR(255), PRIMARY KEY (id))");	
+		jdbcTemplate.execute("CREATE TABLE disciplina(id SERIAL, id_professor int, nome VARCHAR(255), PRIMARY KEY (id),FOREIGN KEY (id_professor) REFERENCES professor(id));");
 		jdbcTemplate.update("INSERT INTO professor(nome) VALUES (?)", "Edson Angoti Júnior");
 		jdbcTemplate.update("INSERT INTO professor(nome) VALUES (?)", "Clarimundo Machado");
 		jdbcTemplate.update("INSERT INTO professor(nome) VALUES (?)", "Rodrigo Cavanha");
