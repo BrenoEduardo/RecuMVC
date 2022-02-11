@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout">
+<div th:fragment="conteudo">
+  <div class="container">
+    <h1>Lista de alunos</h1>
+      <table class="table table-dark table-hover">
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CPF</th>
+          </tr>
+          <tr th:each="aluno:${lista}" th:object="${aluno}">
+            <td th:text="*{nome}"> <a th:href="@{/matricular-aluno(id=*{id})}"> 1 </a></td>
+            <td th:text="*{email}">2</td>
+            <td th:text="*{cpf}">3</td>
+            <td><a href="@{/matricular-aluno(id=*{id})}">Disciplinas</a></td>
+            <td>
+             <a th:href="@{/matricula-aluno(id=*{id})}">Excluir</a>
+            </td>
+          </tr>
+      </table>
+    </div>
+    </div>
+</html>

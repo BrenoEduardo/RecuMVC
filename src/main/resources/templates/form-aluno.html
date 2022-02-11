@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout">
+<div th:fragment="conteudo">
+
+  <div class="container">
+    <h1>Novo aluno</h1>
+    <form th:action="@{/novo-aluno}" method="post" th:object="${aluno}">
+      Nome:<input class="form-control" type="text" th:field="*{nome}" required><br>
+      E-mail:<input class="form-control" type="email" th:field="*{email}"><br>
+      CPF:<input class="form-control" type="text" th:field="*{cpf}" maxlength="11"><br>
+      <input type="submit">
+    </form>
+  </div>
+
+</div>
+
+</html>
