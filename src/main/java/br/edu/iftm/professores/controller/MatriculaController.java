@@ -17,10 +17,15 @@ import br.edu.iftm.professores.repository.MatriculaRepository;
 
 @Controller
 public class MatriculaController {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9475e3244daa4cd37cc9654d70683699ae4acaf0
     @Autowired
     private DisciplinaRepository disciplinaRepository;
 
     @Autowired
+<<<<<<< HEAD
     private AlunoRepository alunoRepository;
 
     @Autowired
@@ -38,5 +43,27 @@ public class MatriculaController {
     public String efetuarMatricula(Matricula matricula){
         matriculaRepository.grava(matricula);
         return "redirect/alunos";
+=======
+    private MatriculaRepository matriculaRepository;
+
+    @Autowired
+    private AlunoRepository alunoRepository;
+
+    @GetMapping("matricular-aluno")
+    public String matricula(@RequestParam(name = "id", required = true) Integer cod, Model modelo) {
+        List<Disciplina> lista = disciplinaRepository.buscaTodos();
+        modelo.addAttribute("lista", lista);
+        modelo.addAttribute("aluno", alunoRepository.buscaPorId(cod));
+        modelo.addAttribute("matricula", matriculaRepository.buscaPorAlunoId(cod));
+        return "matricula";
+    }
+
+    @PostMapping("matricular-aluno")
+    public String efetuarMatricula(Matricula matricula) {
+        System.out.println("-------------------------> " + matricula.getDisciplinas().size());
+        System.out.println("-------------------------> " + matricula.getIdAluno());
+        matriculaRepository.grava(matricula);
+        return "redirect:/alunos";
+>>>>>>> 9475e3244daa4cd37cc9654d70683699ae4acaf0
     }
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://thymeleaf.org" th:replace="fragmentos/layout">
 <head>
@@ -23,4 +24,29 @@
         </form>
     </div>
 </body>
+=======
+<!-- ******************************************
+*  Created On : Wed Jan 19 2022
+*  Modelo de arquivo HTML para adicionar nova tela de conteúdo dentro do layout estabelecido no arquivo fragmentos/layout.html
+******************************************* -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="fragmentos/layout">
+<div th:fragment="conteudo" class="container">
+    <h4>Matrícula do aluno <span th:text="${aluno.nome}"></span></h4>
+    <h5>Lista de disciplinas</h5>
+    <p>Marque as disciplinas que deseja matricular e desmarque as disciplinas que deseja retirar da matrícula</p>
+    <form action="matricular-aluno" method="post" th:object="${matricula}">
+        <input type="hidden" th:field="*{idAluno}">
+        <ul>
+            <li th:each="disciplina : ${lista}">
+                <input type="checkbox" th:field="*{disciplinas}" th:value="${disciplina.id}" />
+                <label th:for="${#ids.prev('disciplinas')}" th:text="${disciplina.nome}">nome da disciplina</label>
+            </li>
+        </ul>
+
+        <input type="submit" value="Matricular">
+    </form>
+</div>
+
+>>>>>>> 9475e3244daa4cd37cc9654d70683699ae4acaf0
 </html>
